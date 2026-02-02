@@ -280,7 +280,7 @@ generate if(C_DRP_ILA_ENABLE)begin
         .probe7  (lb2drp_u.M_DRPRDY  ) 
           
     );  
-
+;
 
 
 
@@ -292,7 +292,7 @@ endgenerate
 
 
     
-endmodule
+endmodule 
 
 
 
