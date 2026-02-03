@@ -1,0 +1,11 @@
+ADDR_DT_INSIDE                  0x0000     //DT值    
+ADDR_WC_INSIDE                  0x0004     //WC值    
+ADDR_VC_INSIDE                  0x0008     //VC值    
+ADDR_CPNT_INSIDE                0x000C     //CPNT值，一个像素占的分量数，例如对于rgb，分量是3，对于yuv422，分量是2  
+ADDR_FIFO_RST                   0x0010     //对模块内部的fifo清0；该变量会自清   
+ADDR_DT_OUTSIDE_CTRL_EN         0x0014     //0:DT值来自模块内部（被软核控制） 1：DT值来自上级模块（一般为RGB_2_RAW）  
+ADDR_WC_OUTSIDE_CTRL_EN         0x0018     //0:WC值来自模块内部（被软核控制） 1：DT值来自上级模块（一般为RGB_2_RAW）    
+ADDR_VC_OUTSIDE_CTRL_EN         0x001C     //0:VC值来自模块内部（被软核控制） 1：DT值来自上级模块（一般为RGB_2_RAW）    
+ADDR_CPNT_NUM_OUTSIDE_CTRL_EN   0x0020     //0:CPNT值来自模块内部（被软核控制） 1：DT值来自上级模块（一般为RGB_2_RAW）    
+ADDR_FIFO_FULL                  0x0024     //只读，判断内部fifo是否“出现过”满的情况； 该变量读后自清  
+
