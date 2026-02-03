@@ -1,0 +1,12 @@
+`define ADDR_AUDIO_IN_ENABLE          16'h0000  //输入使能（同时不断进行fft分析）   启动后，一旦fifo有一定数据，即可开始读取（读取到的是连续值）； 如果外部不读取，fifo满后也会自动溢出
+`define ADDR_AUDIO_OUT_ENABLE         16'h0004  //输出使能
+`define ADDR_L_SIGNAL_POWER_LOW       16'h0008  //左声道 信号功率  低32位
+`define ADDR_L_SIGNAL_POWER_HIGH      16'h000c  //左声道 信号功率  高32位
+`define ADDR_L_NOICE_POWER_LOW        16'h0010  //左声道 噪声功率  低32位
+`define ADDR_L_NOICE_POWER_HIGH       16'h0014  //左声道 噪声功率  高32位
+`define ADDR_L_CORE_FREQ_HZ           16'h0018  //左声道 信号频率（Hz）
+`define ADDR_R_SIGNAL_POWER_LOW       16'h001c  //右声道 信号功率  低32位
+`define ADDR_R_SIGNAL_POWER_HIGH      16'h0020  //右声道 信号功率  高32位                                                                               
+`define ADDR_R_NOICE_POWER_LOW        16'h0024  //右声道 噪声功率  低32位
+`define ADDR_R_NOICE_POWER_HIGH       16'h0028  //右声道 噪声功率  高32位
+`define ADDR_R_CORE_FREQ_HZ           16'h002c  //右声道 信号频率（Hz）
