@@ -1,0 +1,23 @@
+ pwr_load 模块增加两个寄存器（写任意值都可以）
+
+16'h002c: sync_axi <= 1;  //--  触发底层：图片从地址0开始存，存到500帧后停止；   同时crc清空后，从地址0开始存，一直到存满 ---- 图片地址和crc fifo中的值一一对应 （嵌入式可以读取crc fifo的数量来判断保存了多少张图片 ）
+16'h0030: normal_axi <= 1; //  重新启动图片的存储
+
+
+
+rgb analyze 模块：
+`define   ADDR_CRC_EXCLUSIVE_X         16'h1030  
+`define   ADDR_CRC_EXCLUSIVE_Y         16'h1034  
+`define   ADDR_CRC_EXCLUSIVE_H         16'h1038   
+`define   ADDR_CRC_EXCLUSIVE_V         16'h103c  
+
+________________________ x 递增
+|
+|
+|                              x,y-----h
+|                              |              
+|                              |
+|                              v
+|
+y
+递增

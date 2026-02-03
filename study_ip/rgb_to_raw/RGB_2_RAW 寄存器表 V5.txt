@@ -1,0 +1,11 @@
+`define ADDR_INSIDE_TRANSFER_MODE              16'h0000   //转换模式：0 ：输入什么输出什么 1：对输入内容转换为YUV422；2：对属于内容转换为RAW
+`define ADDR_INSIDE_DT                         16'h0004   //DT值
+`define ADDR_INSIDE_VC                         16'h0008   //VC值
+`define ADDR_INSIDE_WC                         16'h000c   //WC值
+`define ADDR_TRANSFER_MODE_OUTSIDE_CTRL_EN     16'h0010   //转换模式的来源：0：来自内部（即可以通过软核配置） 1：即不受软核控制，而是直接来自上级模块传递（一般为来自PROCESS）     
+`define ADDR_DT_OUTSIDE_CTRL_EN                16'h0014   //转换模式的来源：0：来自内部（即可以通过软核配置） 1：即不受软核控制，而是直接来自上级模块传递（一般为来自PROCESS） 
+`define ADDR_WC_OUTSIDE_CTRL_EN                16'h0018   //转换模式的来源：0：来自内部（即可以通过软核配置） 1：即不受软核控制，而是直接来自上级模块传递（一般为来自PROCESS） 
+`define ADDR_VC_OUTSIDE_CTRL_EN                16'h001c   //转换模式的来源：0：来自内部（即可以通过软核配置） 1：即不受软核控制，而是直接来自上级模块传递（一般为来自PROCESS） 
+
+
+
