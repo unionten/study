@@ -1,0 +1,30 @@
+`define  ADDR_FILTER_EN                      16'h0000  //最低8bit用于控制是否进行过滤
+`define  ADDR_STABLE_STATUS                  16'h0004  //只读； 最低8bit用于判断各路FSYNC是否稳定
+`define  ADDR_TIMEOUT_STATUS                 16'h0008  //只读； 最低8bit用于判断各路FSYNC是超时（即一段时间没来fsync，认为超时）
+
+`define  ADDR_FSYNC_HZ_0_3                   16'h000C  //[XX][XX][XX][XX]  [CH3 FSYNC 帧率], [CH2 FSYNC 帧率], [CH1 FSYNC帧率] , [CH0 FSYNC帧率]    
+`define  ADDR_FSYNC_HZ_4_7                   16'h0010   
+`define  ADDR_FSYNC_FILTER_HZ_0_3            16'h0014   
+`define  ADDR_FSYNC_FILTER_HZ_4_7            16'h0018   
+`define  ADDR_PROC_VS_HZ_0_3                 16'h001C   
+`define  ADDR_PROC_VS_HZ_4_7                 16'h0020   
+`define  ADDR_MIPI_VS_HZ_0_3                 16'h0024   
+`define  ADDR_MIPI_VS_HZ_4_7                 16'h0028   
+
+`define  ADDR_FILTER_TIMES_0                 16'h1000  //配置 连续多少次vs间隔稳定，才开启传递
+`define  ADDR_FILTER_TIMES_1                 16'h1004 
+`define  ADDR_FILTER_TIMES_2                 16'h1008 
+`define  ADDR_FILTER_TIMES_3                 16'h100C 
+`define  ADDR_FILTER_TIMES_4                 16'h1010 
+`define  ADDR_FILTER_TIMES_5                 16'h1014 
+`define  ADDR_FILTER_TIMES_6                 16'h1018 
+`define  ADDR_FILTER_TIMES_7                 16'h101C 
+
+`define  ADDR_FILTER_THRESHHOLD_CLKPRD_0     16'h2000  //判断两次vs间隔相同的 阈值 (时钟次数数) - 即两次差值在该值之内算相同
+`define  ADDR_FILTER_THRESHHOLD_CLKPRD_1     16'h2004 
+`define  ADDR_FILTER_THRESHHOLD_CLKPRD_2     16'h2008 
+`define  ADDR_FILTER_THRESHHOLD_CLKPRD_3     16'h200C 
+`define  ADDR_FILTER_THRESHHOLD_CLKPRD_4     16'h2010 
+`define  ADDR_FILTER_THRESHHOLD_CLKPRD_5     16'h2014 
+`define  ADDR_FILTER_THRESHHOLD_CLKPRD_6     16'h2018 
+`define  ADDR_FILTER_THRESHHOLD_CLKPRD_7     16'h201C 
