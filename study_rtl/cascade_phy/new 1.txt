@@ -1,0 +1,91 @@
+   OSERDESE2
+       # (
+         .DATA_RATE_OQ   ("DDR"),
+         .DATA_RATE_TQ   ("DDR"),
+         .DATA_WIDTH     (SER_FACTOR),
+         .TRISTATE_WIDTH (4),
+         .SERDES_MODE    ("MASTER"))
+       oserdese2_master (
+         .D1             (o_serdes_dat[3][pin_dat_count]),
+         .D2             (o_serdes_dat[2][pin_dat_count]),
+         .D3             (o_serdes_dat[1][pin_dat_count]),
+         .D4             (o_serdes_dat[0][pin_dat_count]),
+          .D5              (),
+          .D6              (),
+          .D7              (),
+          .D8              (),
+
+         .T1             (w_dat_dval[pin_dat_count]),
+         .T2             (w_dat_dval[pin_dat_count]),
+         .T3             (w_dat_dval[pin_dat_count]),
+         .T4             (w_dat_dval[pin_dat_count]),
+         .SHIFTIN1       (1'b0),
+         .SHIFTIN2       (1'b0),
+         .SHIFTOUT1      (),
+         .SHIFTOUT2      (),
+         .OCE            (1'b1),
+         .CLK            (i_clk),
+         .CLKDIV         (i_clk_div),
+         .OQ             (w_tx_data[pin_dat_count]),
+         .TQ             (o_tristate_int[pin_dat_count+CMD_OUT]), // Tri-State control for IOB
+         .OFB            (),
+         .TFB            (),
+         .TBYTEIN        (1'b0),
+         .TBYTEOUT       (),
+         .TCE            (1'b1),
+         .RST            (i_rst));
+
+
+     
+     for (sli_dat_count = 0; sli_dat_count < SER_FACTOR; sli_dat_count = sli_dat_count + 1) begin: dat_slices
+        assign o_serdes_dat[sli_dat_count] =
+           i_tx_data[sli_dat_count*DAT_OUT+:DAT_OUT];
+     end
+    end 
+for (pin_dat_count = 0; pin_dat_count < DAT_IN; pin_dat_count = pin_dat_count + 1) begin: dat_in  
+    
+     ISERDESE2
+       #  (.DATA_WIDTH       (4),         
+          .DATA_RATE        ("DDR"),       
+          .SERDES_MODE      ("MASTER"),       
+          .IOBDELAY        ("IFD"),       
+          .INTERFACE_TYPE   ("NETWORKING"),
+          .NUM_CE      (1))  
+       iserdese2_master (
+         .Q1                (i_serdes_dat[0][pin_dat_count]),
+         .Q2                (i_serdes_dat[1][pin_dat_count]),
+         .Q3                (i_serdes_dat[2][pin_dat_count]),
+         .Q4                (i_serdes_dat[3][pin_dat_count]),
+         .Q5                (),
+         .Q6                (),
+         .Q7                (),
+         .Q8                (),
+
+         .SHIFTOUT1         (),
+         .SHIFTOUT2         (),
+         .BITSLIP           (bitslip[pin_dat_count+CMD_OUT]),                             // 1-bit Invoke Bitslip. This can be used with any DATA_WIDTH, cascaded or not.
+                                                                   // The amount of BITSLIP is fixed by the DATA_WIDTH selection.
+         .CE1               (1'b1),                        // 1-bit Clock enable input
+         .CE2               (1'b1),                        // 1-bit Clock enable input
+         .CLK               (i_clk),                      // Fast source synchronous clock driven by BUFIO
+         .CLKB              (~i_clk),                      // Locally inverted fast 
+         .CLKDIV            (i_clk_div),                             // Slow clock from BUFR.
+         .CLKDIVP           (1'b0),
+         .D                 (1'b0),                                // 1-bit Input signal from IOB
+         .DDLY              (i_dat[pin_dat_count]),  // 1-bit Input from Input Delay component 
+         .RST               (i_rst),                            // 1-bit Asynchronous reset only.
+         .SHIFTIN1          (1'b0),
+         .SHIFTIN2          (1'b0),
+         .DYNCLKDIVSEL      (1'b0),
+         .DYNCLKSEL         (1'b0),
+         .OFB               (1'b0),
+         .OCLK              (1'b0),
+         .OCLKB             (1'b0),
+         .O                 ());                                   // unregistered output of ISERDESE1  
+
+      for (sli_dat_count = 0; sli_dat_count < SER_FACTOR; sli_dat_count = sli_dat_count + 1) begin: bak_dat_slices
+        assign o_rx_data[sli_dat_count*DAT_IN+:DAT_IN] =
+          i_serdes_dat[sli_dat_count];
+     end  
+   end
+ end  

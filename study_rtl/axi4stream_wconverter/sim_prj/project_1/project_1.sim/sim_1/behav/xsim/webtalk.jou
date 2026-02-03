@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Wed May 15 09:11:00 2024
+# Process ID: 11680
+# Current directory: G:/_0_MY_RTL_/axi4stream_wconverter/sim_prj/project_1/project_1.sim/sim_1/behav/xsim
+# Command line: wbtcv.exe -mode batch -source G:/_0_MY_RTL_/axi4stream_wconverter/sim_prj/project_1/project_1.sim/sim_1/behav/xsim/xsim.dir/tb_axi4stream_wconverter_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: G:/_0_MY_RTL_/axi4stream_wconverter/sim_prj/project_1/project_1.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: G:/_0_MY_RTL_/axi4stream_wconverter/sim_prj/project_1/project_1.sim/sim_1/behav/xsim\webtalk.jou
+#-----------------------------------------------------------
+source G:/_0_MY_RTL_/axi4stream_wconverter/sim_prj/project_1/project_1.sim/sim_1/behav/xsim/xsim.dir/tb_axi4stream_wconverter_behav/webtalk/xsim_webtalk.tcl -notrace
